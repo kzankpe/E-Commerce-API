@@ -22,7 +22,7 @@ func NewRegisterUseCase(userRepo repositories.UserRepository, hasher *password.H
 	}
 }
 
-func (uc *RegisterUseCase) Execute(ctx context.Context, email, password, firstName, lastName string) (*domain.User, error) {
+func (uc *RegisterUseCase) Execute(ctx context.Context, email, password, firstName, lastName string) (*models.User, error) {
 	// Validate input
 	v := validator.New().
 		ValidateEmail(email).
@@ -53,7 +53,7 @@ func (uc *RegisterUseCase) Execute(ctx context.Context, email, password, firstNa
 	// Create user
 	user := &models.User{
 		Email:     email,
-		Password:  hashedPassword,
+		Password:  string(hashedPassword),
 		FirstName: firstName,
 		LastName:  lastName,
 		IsActive:  true,

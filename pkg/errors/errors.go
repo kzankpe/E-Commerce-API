@@ -43,6 +43,11 @@ var (
 		Message: "Authorization token is required",
 	}
 
+	ErrTokenExpired = &AppError{
+		Code:    http.StatusInternalServerError,
+		Message: "Authorization token is expired",
+	}
+
 	ErrInvalidInput = &AppError{
 		Code:    http.StatusBadRequest,
 		Message: "Invalid input data",

@@ -3,6 +3,7 @@ package user
 import (
 	"context"
 
+	"github.com/kzankpe/e-commerce-api/internal/domain/models"
 	"github.com/kzankpe/e-commerce-api/internal/domain/repositories"
 	"github.com/kzankpe/e-commerce-api/pkg/errors"
 )
@@ -17,7 +18,7 @@ func NewGetUserUseCase(userRepo repositories.UserRepository) *GetUserUseCase {
 	}
 }
 
-func (uc *GetUserUseCase) Execute(ctx context.Context, userID string) (*domain.User, error) {
+func (uc *GetUserUseCase) Execute(ctx context.Context, userID string) (*models.User, error) {
 	user, err := uc.userRepo.GetByID(ctx, userID)
 	if err != nil {
 		return nil, errors.NewAppError(500, "Failed to fetch user", err.Error())
