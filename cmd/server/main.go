@@ -49,6 +49,8 @@ func main() {
 
 	log.Println("Starting the server")
 	//router := server.Group("/api/v1")
+	//handlers := handler.NewAuthHandler(registerUC)
+	//r := router.NewRouter(handlers)
 
 	// Run the server (listen on all interfaces)
 	err := server.Run(":8080")
